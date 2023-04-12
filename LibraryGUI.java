@@ -1,5 +1,4 @@
 
-
 import java.io.*;
 
 public class LibraryGUI extends javax.swing.JFrame {
@@ -330,7 +329,6 @@ public class LibraryGUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LibraryGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
