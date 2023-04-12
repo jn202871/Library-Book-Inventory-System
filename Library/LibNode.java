@@ -84,5 +84,9 @@ public class LibNode {
 	public void checkOut(){
 		this.checkedOut = true;
 	}
+
+	public String getData(){
+		return name + "-" + author + "-" + java.lang.Integer.toString(CRN);
+	}
 	
 }

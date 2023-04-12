@@ -1,10 +1,30 @@
 package Library;
+
+import java.io.*;
+
 public class LibraryGUI extends javax.swing.JFrame {
     private BinarySearchTree bst;
 
     public LibraryGUI() {
         bst = new BinarySearchTree();
         initComponents();
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader("bst.txt"));
+            String line;
+            while((line=reader.readLine()) != null){
+                String[] arr = line.split("-");
+                System.out.println(arr);
+                try{
+                    LibNode newNode = new LibNode(arr[0],arr[1],java.lang.Integer.parseInt(arr[2]));
+                    bst.insert(newNode);
+                } catch (ArrayIndexOutOfBoundsException arre){
+                    System.out.println("End of file");
+                }
+            }
+            reader.close();
+        } catch (IOException er) {
+            er.printStackTrace();
+        }
     }
                         
     private void initComponents() {
@@ -43,6 +63,19 @@ public class LibraryGUI extends javax.swing.JFrame {
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                System.out.println("Closing Window and Saving BST");
+                try{
+                    PrintStream output = new PrintStream("bst.txt");
+                    bst.write(output);
+                    System.exit(0);
+                } catch (IOException er) {
+                    er.printStackTrace();
+                }
+            }
+        });
 
         jTextField1.setText("Input CRN");
 
@@ -301,6 +334,8 @@ public class LibraryGUI extends javax.swing.JFrame {
             }
         });
     }
+
+    
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
