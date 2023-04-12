@@ -14,12 +14,6 @@ public class LibraryGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jPopupMenu2 = new javax.swing.JPopupMenu();
-        jPopupMenu3 = new javax.swing.JPopupMenu();
-        jPopupMenu4 = new javax.swing.JPopupMenu();
-        jPopupMenu5 = new javax.swing.JPopupMenu();
-        jPopupMenu6 = new javax.swing.JPopupMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -72,15 +66,15 @@ public class LibraryGUI extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
-    }                                      
+    }// </editor-fold>                                                           
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-    }                                          
+        new addBook();
+    }   
+    
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        new removeBook();
+    }                                         
 
     /**
      * @param args the command line arguments
@@ -123,11 +117,5 @@ public class LibraryGUI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JPopupMenu jPopupMenu2;
-    private javax.swing.JPopupMenu jPopupMenu3;
-    private javax.swing.JPopupMenu jPopupMenu4;
-    private javax.swing.JPopupMenu jPopupMenu5;
-    private javax.swing.JPopupMenu jPopupMenu6;
     // End of variables declaration                   
 }
