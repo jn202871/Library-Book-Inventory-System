@@ -4,21 +4,23 @@ import java.awt.event.*;
 import java.awt.event.ActionEvent;
 //import java.lang.Integer.parseInt;
 public class removeBook extends javax.swing.JFrame{
-	public removeBook(){
+	private BinarySearchTree bst;
+
+	public removeBook(BinarySearchTree bst){
 		super("Remove Book");
+		this.bst = bst;
 		setLayout(new BorderLayout());
 		//setResizeable(false);
 		setLocationRelativeTo(null);
 		buildApp();
 		pack();
-		setSize(250,110);
+		setSize(250,150);
 		setVisible(true);
-		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 	
 	void buildApp(){
 		JLabel addInstruction = new JLabel("Enter CRN of book to remove");
-		JTextField bookCRN = new JTextField("Input CRN");
+		JTextField bookCRN = new JTextField("CRN");
 		JButton submit = new JButton("Submit");
 		JButton cancel = new JButton("Cancel");
 		JPanel buttonPanel = new JPanel();
@@ -34,16 +36,16 @@ public class removeBook extends javax.swing.JFrame{
 		
 		cancel.addActionListener(new ActionListener(){
 			@Override
-			public void actionPreformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
 		
 		submit.addActionListener(new ActionListener(){
-			public void actionPreformed(ActionEvent e){
-			//int intCRN = parseInt(bookCRN.getText(),5);
-			//System.out.println(intCRN);
+			public void actionPerformed(ActionEvent e){
+			int intCRN = java.lang.Integer.parseInt(bookCRN.getText());
 			JOptionPane.showMessageDialog(null, "Removing Book");
+			bst.delete(intCRN);
 			dispose();
 			}
 		});
