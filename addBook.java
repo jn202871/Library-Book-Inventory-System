@@ -23,8 +23,8 @@ public class addBook extends javax.swing.JFrame{
 	}
 	
 	void buildApp(){
-		JLabel addInstruction = new JLabel("Enter name, author, and CRN of new book");
-		JTextField bookName = new JTextField("Name");
+		JLabel addInstruction = new JLabel("Enter title, author, and CRN of new book");
+		JTextField bookName = new JTextField("Title");
 		JTextField bookAuthor = new JTextField("Author");
 		JLabel bookCRN = new JLabel("CRN: " + java.lang.Integer.toString(CRN));
 		JButton submit = new JButton("Submit");
