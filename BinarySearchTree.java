@@ -1,4 +1,4 @@
-package Library;
+
 import java.io.*;
 public class BinarySearchTree{
     private LibNode root;
@@ -120,24 +120,20 @@ public class BinarySearchTree{
         }
     }
 
-    public void write(PrintStream writer) {
-        write(root, "", writer);
-        writer.close();
+    public void write(FileWriter writer) {
+        writerc(root, writer);
+    }
 
-  }
-
-   private void write(LibNode root, String code, PrintStream writer) {
-          if(root != null) {
-              if(root.getLeft() == null && root.getRight() == null) {
-                  write(root.getLeft(), code, writer);
-                  write(root.getRight(), code, writer);
-
-              }
-              writer.println(root.getData() + "\n");
-              write(root.getLeft(), code, writer);
-              write(root.getRight(), code, writer);
-                     // recursive-case 
-
-          }
-      }
+    private void writerc(LibNode root, FileWriter writer) {
+          if (root != null){
+            writerc(root.getLeft(), writer);
+            try{
+                writer.write(root.getData() + "\n");
+            } catch (IOException ew) {
+                ew.printStackTrace();
+            }
+            writerc(root.getRight(), writer);
+        }
+        
+    }
 }

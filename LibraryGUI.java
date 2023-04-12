@@ -1,4 +1,4 @@
-package Library;
+
 
 import java.io.*;
 
@@ -16,6 +16,9 @@ public class LibraryGUI extends javax.swing.JFrame {
                 System.out.println(arr);
                 try{
                     LibNode newNode = new LibNode(arr[0],arr[1],java.lang.Integer.parseInt(arr[2]));
+                    if (java.lang.Integer.parseInt(arr[3]) == 1) {
+                        newNode.setCheck(true);
+                    } else newNode.setCheck(false);
                     bst.insert(newNode);
                 } catch (ArrayIndexOutOfBoundsException arre){
                     System.out.println("End of file");
@@ -68,8 +71,9 @@ public class LibraryGUI extends javax.swing.JFrame {
             public void windowClosing(java.awt.event.WindowEvent e) {
                 System.out.println("Closing Window and Saving BST");
                 try{
-                    PrintStream output = new PrintStream("bst.txt");
-                    bst.write(output);
+                    FileWriter writer = new FileWriter("bst.txt", false);
+                    bst.write(writer);
+                    writer.close();
                     System.exit(0);
                 } catch (IOException er) {
                     er.printStackTrace();

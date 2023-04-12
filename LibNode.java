@@ -1,4 +1,4 @@
-package Library;
+
 // Node with 2 child nodes
 public class LibNode {
 	
@@ -86,7 +86,15 @@ public class LibNode {
 	}
 
 	public String getData(){
-		return name + "-" + author + "-" + java.lang.Integer.toString(CRN);
+		String checktemp;
+		if (checkedOut == true) {
+			checktemp = "1";
+		} else checktemp = "0";
+		return name + "-" + author + "-" + java.lang.Integer.toString(CRN) + "-" + checktemp;
+	}
+
+	public void setCheck(Boolean x){
+		checkedOut = x;
 	}
 	
 }
