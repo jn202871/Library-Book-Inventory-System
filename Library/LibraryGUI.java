@@ -1,3 +1,4 @@
+package Library;
 public class LibraryGUI extends javax.swing.JFrame {
     private BinarySearchTree bst;
 

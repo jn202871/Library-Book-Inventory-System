@@ -1,3 +1,4 @@
+package Library;
 public class BinarySearchTree{
     private LibNode root;
 
