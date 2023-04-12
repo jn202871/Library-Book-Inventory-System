@@ -110,6 +110,11 @@ public class LibraryGUI extends javax.swing.JFrame {
         });
 
         jButton6.setText("Edit Book");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Menu");
 
@@ -255,7 +260,11 @@ public class LibraryGUI extends javax.swing.JFrame {
         } else {
             jLabel6.setText("No");
         }
-    }                                      
+    }                                  
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        new editBook(bst,java.lang.Integer.parseInt(jTextField2.getText()));
+    }                           
 
     /**
      * @param args the command line arguments

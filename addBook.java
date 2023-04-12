@@ -84,7 +84,8 @@ public class addBook extends javax.swing.JFrame{
 	private void saveCRN(){
 		try {
             FileWriter writer = new FileWriter("CRN.txt", false);
-            writer.write(CRN);
+			System.out.println(CRN);
+            writer.write(java.lang.Integer.toString(CRN));
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
