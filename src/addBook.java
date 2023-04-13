@@ -9,17 +9,16 @@ import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.io.*;
 
-//import java.lang.Integer.parseInt;
 public class addBook extends javax.swing.JFrame{
-	private static int CRN;
-	private BinarySearchTree bst;
+	private static int CRN; //CRN value is predetermined and not input by user to avoid 2 books having the same value
+	private BinarySearchTree bst; // bst is imported to be able to insert new node
 
 	public addBook(BinarySearchTree bst){
 		super("Add Book");
 		this.bst = bst;
-		CRN = loadCRN();
+		CRN = loadCRN(); //Loads CRN from text file
+		//GUI stuff
 		setLayout(new BorderLayout());
-		//setResizeable(false);
 		setLocationRelativeTo(null);
 		buildApp();
 		pack();
@@ -27,7 +26,7 @@ public class addBook extends javax.swing.JFrame{
 		setVisible(true);
 	}
 	
-	void buildApp(){
+	void buildApp(){ //Lots and Lots of GUI stuff
 		JLabel addInstruction = new JLabel("Enter title, author, and CRN of new book");
 		JTextField bookName = new JTextField("Title");
 		JTextField bookAuthor = new JTextField("Author");
@@ -47,14 +46,14 @@ public class addBook extends javax.swing.JFrame{
 		add(textPanel, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.SOUTH);
 		
-		cancel.addActionListener(new ActionListener(){
+		cancel.addActionListener(new ActionListener(){ // If cancel button pressed, close window
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
 		
-		submit.addActionListener(new ActionListener(){
+		submit.addActionListener(new ActionListener(){ // If submit button pressed, create new node from inputs and append to tree, then close window with message that node was added
 			@Override
 			public void actionPerformed(ActionEvent e){
 			//int intCRN = parseInt(bookCRN.getText(),5);
@@ -69,7 +68,7 @@ public class addBook extends javax.swing.JFrame{
 		});
 	}
 
-	private int loadCRN(){
+	private int loadCRN(){ // Opens text file, reads CRN, then closes file
 		try {
             FileReader reader = new FileReader("CRN.txt");
             BufferedReader bufferedReader = new BufferedReader(reader);
@@ -86,7 +85,7 @@ public class addBook extends javax.swing.JFrame{
         }
     }
 
-	private void saveCRN(){
+	private void saveCRN(){ // Overwrites textfile with new CRN value, generates new txt file if one does not exist
 		try {
             FileWriter writer = new FileWriter("CRN.txt", false);
 			System.out.println(CRN);

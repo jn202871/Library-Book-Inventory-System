@@ -6,15 +6,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
-//import java.lang.Integer.parseInt;
+
 public class removeBook extends javax.swing.JFrame{
-	private BinarySearchTree bst;
+	private BinarySearchTree bst; //stores bst
 
 	public removeBook(BinarySearchTree bst){
 		super("Remove Book");
 		this.bst = bst;
+		//GUI stuff
 		setLayout(new BorderLayout());
-		//setResizeable(false);
 		setLocationRelativeTo(null);
 		buildApp();
 		pack();
@@ -22,7 +22,7 @@ public class removeBook extends javax.swing.JFrame{
 		setVisible(true);
 	}
 	
-	void buildApp(){
+	void buildApp(){ //Moar GUI stuff
 		JLabel addInstruction = new JLabel("Enter CRN of book to remove");
 		JTextField bookCRN = new JTextField("CRN");
 		JButton submit = new JButton("Submit");
@@ -38,14 +38,14 @@ public class removeBook extends javax.swing.JFrame{
 		add(textPanel, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.SOUTH);
 		
-		cancel.addActionListener(new ActionListener(){
+		cancel.addActionListener(new ActionListener(){ // If cancel button pressed close window
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
 		
-		submit.addActionListener(new ActionListener(){
+		submit.addActionListener(new ActionListener(){ // If submit button pressed call remove function of BST for the given CRN
 			public void actionPerformed(ActionEvent e){
 			int intCRN = java.lang.Integer.parseInt(bookCRN.getText());
 			JOptionPane.showMessageDialog(null, "Removing Book");

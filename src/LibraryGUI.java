@@ -1,37 +1,37 @@
 package src;
 
 import java.io.*;
-
+//I'm gonna be real with whoever is reading this I don't know what half of this GUI code even does, or if it's even needed.
 public class LibraryGUI extends javax.swing.JFrame {
     private BinarySearchTree bst;
 
-    public LibraryGUI() {
+    public LibraryGUI() { //Constructor
         bst = new BinarySearchTree();
         initComponents();
-        try{
+        try{ //Tries to read information from text file into empty bst
             BufferedReader reader = new BufferedReader(new FileReader("bst.txt"));
             String line;
             while((line=reader.readLine()) != null){
-                String[] arr = line.split("-");
+                String[] arr = line.split("-"); //Text file is structured so nodes are saved as TITLE-AUTHOR-CRN-CHECKOUTSTATUS
                 System.out.println(arr);
                 try{
-                    LibNode newNode = new LibNode(arr[0],arr[1],java.lang.Integer.parseInt(arr[2]));
+                    LibNode newNode = new LibNode(arr[0],arr[1],java.lang.Integer.parseInt(arr[2])); //Creates new node with info from file
                     if (java.lang.Integer.parseInt(arr[3]) == 1) {
                         newNode.setCheck(true);
-                    } else newNode.setCheck(false);
+                    } else newNode.setCheck(false); // Sets proper checkout status
                     bst.insert(newNode);
                 } catch (ArrayIndexOutOfBoundsException arre){
-                    System.out.println("End of file");
+                    System.out.println("End of file"); // Catches if file has ended, yes this means that every time the program is run there is an error on start that is thrown out
                 }
             }
             reader.close();
-        } catch (IOException er) {
+        } catch (IOException er) { //Expecting an error everytime the program is run for the first time instead of checking if the file exists is probably bad form
             er.printStackTrace();
         }
     }
                         
     private void initComponents() {
-
+        //Just so much GUI stuff
         jFrame1 = new javax.swing.JFrame();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -67,7 +67,7 @@ public class LibraryGUI extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        addWindowListener(new java.awt.event.WindowAdapter() {
+        addWindowListener(new java.awt.event.WindowAdapter() { //Edits closing behavior to automatically save BST to file when program is closed
             public void windowClosing(java.awt.event.WindowEvent e) {
                 System.out.println("Closing Window and Saving BST");
                 try{
@@ -175,7 +175,7 @@ public class LibraryGUI extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
+        // This looks terrible but it is how netBeans IDE set it up and I do not know enough about javax.swing to change things
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -259,15 +259,15 @@ public class LibraryGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>                                                        
-
+    //Add book menu item action
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         new addBook(bst);
     }
-    
+    //Remove book menu item action
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         new removeBook(bst);
     }                                        
-
+    // When you press the button to search for a CRN it finds the node from the BST and displays the data
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         LibNode temp = bst.search(java.lang.Integer.parseInt(jTextField2.getText()));
         jLabel1.setText(temp.getName());
@@ -279,7 +279,7 @@ public class LibraryGUI extends javax.swing.JFrame {
             jLabel6.setText("No");
         }
     }                                        
-
+    //Checks in a book
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         LibNode temp = bst.search(java.lang.Integer.parseInt(jTextField2.getText()));
         temp.checkIn();
@@ -289,7 +289,7 @@ public class LibraryGUI extends javax.swing.JFrame {
             jLabel6.setText("No");
         }
     }                                      
-
+    //Checks out a book
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         LibNode temp = bst.search(java.lang.Integer.parseInt(jTextField2.getText()));
         temp.checkOut();
@@ -299,7 +299,7 @@ public class LibraryGUI extends javax.swing.JFrame {
             jLabel6.setText("No");
         }
     }                                  
-
+    //Edits currently searched book. You must search for the book before trying to press the edit button.
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         new editBook(bst,java.lang.Integer.parseInt(jTextField2.getText()));
     }                           
@@ -307,12 +307,7 @@ public class LibraryGUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    public static void main(String args[]) { 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -329,8 +324,8 @@ public class LibraryGUI extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LibraryGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        /* Create and display the form */
+        
+        // I have literally no idea why this can't just be "new LibraryGUI().setVisible(true)" instead of a new runnable, because that still works, I guess netBeans knows more than I do
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LibraryGUI().setVisible(true);
