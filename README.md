@@ -6,4 +6,6 @@ The information of each book can be modified and the books can be checked in and
 
 Book information and current CRN value will be stored in the two included text files.
 
+CRN values start at 1 and the first 3 are already prefilled. To add or remove books simply use the menu at the top of the window.
+
 NOTE: CRN.TXT & BST.TXT MUST BE IN THE SAME DIRECTORY AS THE .JAR
