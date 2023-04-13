@@ -8,4 +8,6 @@ Book information and current CRN value will be stored in the two included text f
 
 CRN values start at 1 and the first 3 are already prefilled. To add or remove books simply use the menu at the top of the window.
 
+Note that deleted books CRN values are not reused, EX. if book a with CRN 2 is deleted and there is book b with CRN 3, a new book c will have a CRN of 4 instead of 2.
+
 NOTE: CRN.TXT & BST.TXT MUST BE IN THE SAME DIRECTORY AS THE .JAR
