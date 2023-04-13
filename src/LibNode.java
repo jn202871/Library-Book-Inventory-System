@@ -1,3 +1,4 @@
+package src;
 
 
 // Node with 2 child nodes
